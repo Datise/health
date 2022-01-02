@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  done: false
+  recurring: false
+  important: false
+  urgent: false
+
+two:
+  name: MyString
+  done: false
+  recurring: false
+  important: false
+  urgent: false
