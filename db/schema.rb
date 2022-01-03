@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_210520) do
+ActiveRecord::Schema.define(version: 2022_01_03_194525) do
+
+  create_table "checkins", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.time "date"
+    t.integer "mood"
+    t.integer "sleep"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_checkins_on_user_id"
+  end
 
   create_table "goals", force: :cascade do |t|
     t.string "name"
@@ -46,5 +56,6 @@ ActiveRecord::Schema.define(version: 2022_01_02_210520) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "checkins", "users"
   add_foreign_key "goals", "users"
 end

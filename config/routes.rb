@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :checkins
   resources :tasks
   resources :goals
   devise_for :users

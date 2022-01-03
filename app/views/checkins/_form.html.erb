@@ -1,0 +1,32 @@
+<%= form_with(model: checkin) do |form| %>
+  <% if checkin.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(checkin.errors.count, "error") %> prohibited this checkin from being saved:</h2>
+
+      <ul>
+        <% checkin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div>
+    <%= form.label :mood, style: "display: block" %>
+    <%= form.number_field :mood %>
+  </div>
+
+  <div>
+    <%= form.label :sleep, style: "display: block" %>
+    <%= form.number_field :sleep %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
