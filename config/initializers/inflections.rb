@@ -14,3 +14,8 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym "RESTful"
 # end
+#
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular 'stomach', 'stomachs'
+  inflect.uncountable %w(sleep caffeine)
+end

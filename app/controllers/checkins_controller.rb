@@ -25,8 +25,8 @@ class CheckinsController < ApplicationController
     form = checkin_params
     form[:mood] = form[:mood].to_i
     form[:sleep] = form[:sleep].to_i
-    form[:date] = Time.new(form[:date])
     @checkin = Checkin.new(form)
+    @checkin.date = Time.current
     @checkin.user = current_user
     respond_to do |format|
       if @checkin.save

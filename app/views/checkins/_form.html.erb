@@ -11,19 +11,33 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
 
   <div>
     <%= form.label :mood, style: "display: block" %>
-    <%= form.number_field :mood %>
+    <%= form.select :mood, options_for_select(Checkin.moods.map {|key,
+      value| [key.titleize, Checkin.moods.key(value)]}, @checkin
+      .mood) %>
   </div>
 
   <div>
     <%= form.label :sleep, style: "display: block" %>
-    <%= form.number_field :sleep %>
+    <%= form.select :sleep, options_for_select(Checkin.sleep.map {|key,
+      value| [key.titleize, Checkin.sleep.key(value)]}, @checkin
+      .sleep) %>
+  </div>
+
+  <div>
+    <%= form.label :stomach, style: "display: block" %>
+    <%= form.select :stomach, options_for_select(Checkin.stomachs.map {|key,
+      value| [key.titleize, Checkin.stomachs.key(value)]}, @checkin
+      .stomach) %>
+  </div>
+
+  <div>
+    <%= form.label :caffeine, style: "display: block" %>
+    <%= form.select :caffeine, options_for_select(Checkin.caffeine.map {|key,
+      value| [key.titleize, Checkin.caffeine.key(value)]}, @checkin
+      .caffeine) %>
   </div>
 
   <div>

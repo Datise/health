@@ -10,15 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_194525) do
+ActiveRecord::Schema.define(version: 2022_01_05_041252) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "checkins", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.time "date"
+    t.bigint "user_id", null: false
+    t.datetime "date", precision: 6, default: -> { "CURRENT_TIMESTAMP" }
     t.integer "mood"
     t.integer "sleep"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stomach", default: 0
+    t.integer "caffeine", default: 0
     t.index ["user_id"], name: "index_checkins_on_user_id"
   end
 
@@ -26,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_01_03_194525) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
@@ -38,8 +43,8 @@ ActiveRecord::Schema.define(version: 2022_01_03_194525) do
     t.boolean "urgent"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "goal_id"
-    t.integer "user_id"
+    t.bigint "goal_id"
+    t.bigint "user_id"
     t.index ["goal_id"], name: "index_tasks_on_goal_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

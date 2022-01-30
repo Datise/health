@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :goals
   has_many :tasks
+
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP
+  }, uniqueness: true
 end
